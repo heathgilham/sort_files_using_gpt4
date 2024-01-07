@@ -76,9 +76,9 @@ def is_about_topic(text, file_path):
             # Write the response to a file
             response_file = file_path.replace(source_folder, output_folder) + "_api_response.txt"
             with open(response_file, 'w') as file:
-                file.write(response)
+                file.write(f"OpenAI response: {response}")
                 file.write("\n\n")
-                file.write(text)
+                file.write(f"Text sent to OpenAI: {text}")
 
             return "yes" in response.lower()
         except Exception as e:
