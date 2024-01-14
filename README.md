@@ -35,12 +35,14 @@ Create a folder named "input" in the project directory and place the files you w
 This project uses environment variables which are stored in a `.env` file.
 1. Locate the `.env_template` file in the project directory.
 2. Create a copy of `.env_template` and rename it to `.env`.
-3. Open the `.env` file in a text editor and fill in the necessary information.
+3. Open the `.env` file in a text editor.
+4. Obtain your OpenAI API key by visiting the OpenAI website, signing in, and navigating to the API section. Copy your API key.
+5. In the `.env` file, add your OpenAI API key in the appropriate field.
 
 ### Step 5: Configure `sort_files.py`
 Modify the `sort_files.py` script to suit your specific needs.
 1. Open `sort_files.py` in a text editor.
-2. Adjust line 21 to the relevant topic as per your requirement.
+2. Adjust line 21 to the relevant topic.
 
 ### Step 6: Run the Main Script
 Finally, run the main script of the project.
