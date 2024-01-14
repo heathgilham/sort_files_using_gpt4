@@ -6,6 +6,7 @@ import pytesseract
 from PIL import Image
 from dotenv import load_dotenv
 import time
+import json
 
 # Change the current working directory to the script's directory
 os.chdir(os.path.dirname(__file__))
@@ -25,7 +26,7 @@ logic_to_search = "Is this text about District 73 Toastmasters?"
 
 
 
-# Set functions
+# Define functions
 def extract_text_from_pdf(file_path):
     try:
         text = ""
@@ -71,22 +72,36 @@ def is_about_topic(text, file_path):
                 messages=[{"role": "user", "content": f"{logic_to_search} \n\n {text}"}],
                 model="gpt-3.5-turbo"
             )
-            response = chat_completion.choices[0].message.content
-
+            api_response_message_content = chat_completion.choices[0].message.content
+            
+            # Convert ChatCompletion object to a dictionary
+            chat_completion_dict = {
+                "id": chat_completion.id,
+                "object": chat_completion.object,
+                "created": chat_completion.created,
+                "model": chat_completion.model,
+                "choices": [{"index": choice.index, "message": {"role": choice.message.role, "content": choice.message.content}} for choice in chat_completion.choices]
+            }
+            
+            
             # Write the response to a file
-            response_file = file_path.replace(source_folder, output_folder) + "_api_response.txt"
+            response_file = file_path.replace(source_folder, output_folder) + "_api_response.json"
             with open(response_file, 'w') as file:
-                file.write(f"OpenAI response: {response}")
-                file.write("\n\n")
-                file.write(f"Text sent to OpenAI: {text}")
+                api_response = json.dump(chat_completion_dict, file, indent=4)
+                
+            # Write the text extracted from file to a file
+            text_extracted_file = file_path.replace(source_folder, output_folder) + "_text_extracted.txt"
+            with open(text_extracted_file, 'w') as file:
+                file.write(text)
 
-            return "yes" in response.lower()
+            return "yes" in api_response_message_content.lower()
         except Exception as e:
             print(f"Error in OpenAI API call for file {file_path}: {e}")
             return None
     else:
         return None
 
+# Define folders
 source_folder = 'input'
 output_folder = 'output'
 topic_folder = 'topic'
@@ -97,6 +112,9 @@ os.makedirs(output_folder, exist_ok=True)
 os.makedirs(topic_folder, exist_ok=True)
 os.makedirs(not_topic_folder, exist_ok=True)
 
+
+
+# Do file sorting
 for root, dirs, files in os.walk(source_folder):
     for file in files:
         if file.endswith('.pdf') or file.endswith('.docx'):
