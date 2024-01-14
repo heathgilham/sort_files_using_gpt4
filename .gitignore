@@ -1,4 +1,5 @@
 .env
+input/
 output/
-toastmasters/
-not-toastmasters/
+topic/
+not-topic/

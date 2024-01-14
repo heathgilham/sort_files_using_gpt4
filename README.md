@@ -16,12 +16,12 @@ This project requires certain Python libraries to be installed. You can install 
 1. Open the Command Prompt. You can do this by searching for "cmd" in the Windows Start menu.
 2. Navigate to the root directory of this project. Use the `cd` command followed by the path to the directory. For example:
 
-cd path\to\your\project
+`cd path\to\your\project`
 
 Replace `path\to\your\project` with the actual path where your project is located.
 3. Run the script by typing:
 
-python install_dependencies.py
+`python install_dependencies.py`
 
 
 ### Step 3: Set Up Environment Variables
@@ -40,7 +40,7 @@ Finally, run the main script of the project.
 1. Make sure the Command Prompt is still open and you are in the project's root directory.
 2. Execute the script by running:
 
-python sort_files.py
+`python sort_files.py`
 
 3. Follow any on-screen instructions to complete the process.
 
