@@ -13,14 +13,21 @@ Before you begin, ensure you have Python installed on your system. If you do not
 
 ### Step 2: Install Required Libraries
 This project requires certain Python libraries to be installed. You can install them using the provided `install_dependencies.py` script.
-1. Open a command prompt or terminal.
-2. Navigate to the root directory of this project.
-3. Run the script by typing `python install_dependencies.py`.
+1. Open the Command Prompt. You can do this by searching for "cmd" in the Windows Start menu.
+2. Navigate to the root directory of this project. Use the `cd` command followed by the path to the directory. For example:
+
+cd path\to\your\project
+
+Replace `path\to\your\project` with the actual path where your project is located.
+3. Run the script by typing:
+
+python install_dependencies.py
+
 
 ### Step 3: Set Up Environment Variables
 This project uses environment variables which are stored in a `.env` file.
-1. Locate the `.env.template` file in the project directory.
-2. Create a copy of `.env.template` and rename it to `.env`.
+1. Locate the `.env_template` file in the project directory.
+2. Create a copy of `.env_template` and rename it to `.env`.
 3. Open the `.env` file in a text editor and fill in the necessary information.
 
 ### Step 4: Configure `sort_files.py`
@@ -30,6 +37,12 @@ Modify the `sort_files.py` script to suit your specific needs.
 
 ### Step 5: Run the Main Script
 Finally, run the main script of the project.
-1. In the command prompt or terminal, ensure you are still in the project's root directory.
-2. Execute the script by running `python sort_files.py`.
+1. Make sure the Command Prompt is still open and you are in the project's root directory.
+2. Execute the script by running:
+
+python sort_files.py
+
 3. Follow any on-screen instructions to complete the process.
+
+## Support
+For any queries or issues, please open an issue on the project's GitHub page or contact the maintainer at [your-email@example.com].
